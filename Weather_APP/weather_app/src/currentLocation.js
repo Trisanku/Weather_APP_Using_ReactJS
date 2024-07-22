@@ -126,7 +126,7 @@ import axios from "axios";
 
 
 //   getWeather() {
-//     axios.get('https://api.openweathermap.org/data/3.0/9c6106d697cc413c69bfc4702e6f1aa5')
+//     axios.get('https://api.openweathermap.org/data/3.0/your API key')
 //       .then(response => {
 //         const temperature = response.data?.main?.temp;
 //         if (temperature !== undefined) {
