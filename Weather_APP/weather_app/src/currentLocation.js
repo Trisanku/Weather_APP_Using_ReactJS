@@ -126,7 +126,7 @@ import axios from "axios";
 
 
 //   getWeather() {
-//     axios.get('https://api.openweathermap.org/data/3.0/9c6106d697cc413c69bfc4702e6f1aa5')
+//     axios.get('https://api.openweathermap.org/data/3.0/your API key')
 //       .then(response => {
 //         const temperature = response.data?.main?.temp;
 //         if (temperature !== undefined) {
@@ -269,7 +269,7 @@ class Weather extends React.Component {
 
   getWeather() {
     const { city } = this.state;
-    const apiKey = '9c6106d697cc413c69bfc4702e6f1aa5'; // Replace with your actual API key
+    const apiKey = ''; // Replace with your actual API key
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl)
