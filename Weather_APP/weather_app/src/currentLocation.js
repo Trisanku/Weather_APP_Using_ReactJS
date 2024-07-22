@@ -236,24 +236,38 @@ import axios from "axios";
 
 
 import './App.css'; // Import the CSS file
+// import search from './assets/icons/search.svg'
+
+
+// const [input, setInput] = useState('')
+// const { weather, thisLocation, values, place, setPlace } = useStateContext()
+// // console.log(weather)
+
+// const submitCity = () => {
+//   setPlace(input)
+//   setInput('')
+// }
 
 class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       temp: null,
-      city: 'Delhi', // You can change the city as needed
+      city: 'Pune', // You can change the city as needed
       error: null,
-
+      inputCity: '',
       humidity: null,
       visibility: null,
       windSpeed: null,
     };
   }
 
-  componentDidMount() {
-    this.getWeather();
-  }
+
+
+
+  // componentDidMount() {
+    // this.getWeather();
+  // }
 
   getWeather() {
     const { city } = this.state;
@@ -262,6 +276,7 @@ class Weather extends React.Component {
 
     axios.get(apiUrl)
       .then(response => {
+        // const data = response.data;
         const temperature = response.data?.main?.temp;
         const humidity = response.data.main?.humidity;
         const visibility = response.data.visibility;
@@ -283,16 +298,40 @@ class Weather extends React.Component {
       });
   }
 
+  handleInputChange = (event) => {
+    this.setState({ inputCity: event.target.value });
+  }
+
+  handleSearch = () => {
+    const { inputCity } = this.state;
+    if (inputCity) {
+      this.setState({ city: inputCity }, () => {
+        this.getWeather(this.state.city);
+      });
+    }
+  }
+
   render()  {
-    const {city, temp, humidity, visibility, windSpeed, error } = this.state;
+    const { temp, humidity, visibility, windSpeed, error, inputCity } = this.state; //city 
     return (
       <div className="weather-container">
         <h1>Weather App</h1>
-        <p>City: {city}</p>
+        <div className="search-bar">
+          <input
+            type="text"
+            value={inputCity}
+            onChange={this.handleInputChange}
+            placeholder="Enter city name"
+          />
+          <button onClick={this.handleSearch}>Search</button>
+        </div>
+
+        {/* <p>City: {city}</p> */}
         {error ? (
           <p className="error">{error}</p>
         ) : temp !== null ? (
           <div>
+            <p>City: {inputCity}</p> 
             <p>Temperature: {temp}°C</p>
             <p>Humidity: {humidity}%</p>
             <p>Visibility: {visibility} meters</p>
