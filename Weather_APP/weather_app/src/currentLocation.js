@@ -236,7 +236,6 @@ import axios from "axios";
 
 
 import './App.css'; // Import the CSS file
-// import search from './assets/icons/search.svg'
 
 
 // const [input, setInput] = useState('')
@@ -262,8 +261,7 @@ class Weather extends React.Component {
     };
   }
 
-
-
+    
 
   // componentDidMount() {
     // this.getWeather();
@@ -298,6 +296,39 @@ class Weather extends React.Component {
       });
   }
 
+  //     switch (this.state.main) {
+  //     case "Haze":
+  //       this.setState({ icon: "CLEAR_DAY" });
+  //       break;
+  //     case "Clouds":
+  //       this.setState({ icon: "CLOUDY" });
+  //       break;
+  //     case "Rain":
+  //       this.setState({ icon: "RAIN" });
+  //       break;
+  //     case "Snow":
+  //       this.setState({ icon: "SNOW" });
+  //       break;
+  //     case "Dust":
+  //       this.setState({ icon: "WIND" });
+  //       break;
+  //     case "Drizzle":
+  //       this.setState({ icon: "SLEET" });
+  //       break;
+  //     case "Fog":
+  //       this.setState({ icon: "FOG" });
+  //       break;
+  //     case "Smoke":
+  //       this.setState({ icon: "FOG" });
+  //       break;
+  //     case "Tornado":
+  //       this.setState({ icon: "WIND" });
+  //       break;
+  //     default:
+  //       this.setState({ icon: "CLEAR_DAY" });
+  //   }
+  // };
+
   handleInputChange = (event) => {
     this.setState({ inputCity: event.target.value });
   }
@@ -327,6 +358,8 @@ class Weather extends React.Component {
         </div>
 
         {/* <p>City: {city}</p> */}
+
+
         {error ? (
           <p className="error">{error}</p>
         ) : temp !== null ? (
@@ -338,7 +371,9 @@ class Weather extends React.Component {
             <p>Wind Speed: {windSpeed} m/s</p>
           </div>
         ) : (
-          <p className="loading">Loading...</p>
+          <div className="load">
+          <p className="loading"></p>
+          </div>
         )}
       </div>
     );
